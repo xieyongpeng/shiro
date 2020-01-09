@@ -23,5 +23,6 @@ public class RoleServlet extends HttpServlet {
         Subject subject = SecurityUtils.getSubject();
         subject.checkRole("admin");
         req.getRequestDispatcher("/WEB-INF/jsp/hasRole.jsp").forward(req, resp);
+        
     }
 }
