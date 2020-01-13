@@ -11,6 +11,7 @@
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
     <!-- 默认先从/WEB-INF/shiro.ini，如果没有找classpath:shiro.ini -->
+    <!--  
     <context-param>
         <param-name>shiroEnvironmentClass</param-name>
         <param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
@@ -18,6 +19,18 @@
     <context-param>
         <param-name>shiroConfigLocations</param-name>
         <param-value>classpath:class7/shiro-basicfilterlogin.ini</param-value>
+    </context-param>
+    -->
+    
+    <!--  -->
+    <context-param>
+        <param-name>shiroEnvironmentClass</param-name>
+        <param-value>com.shiro.class8.env.MyIniWebEnvironment</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>shiroConfigLocations</param-name>
+        <param-value>classpath:class8/shiro.ini</param-value>
     </context-param>
     <filter>
         <filter-name>shiroFilter</filter-name>
