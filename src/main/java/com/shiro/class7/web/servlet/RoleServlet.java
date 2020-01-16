@@ -1,13 +1,16 @@
 package com.shiro.class7.web.servlet;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 /**
@@ -21,6 +24,20 @@ public class RoleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Subject subject = SecurityUtils.getSubject();
+        
+//      Session session = subject.getSession();
+//    	System.out.println("id" + session.getId());
+//    	System.out.println("host" + session.getHost());
+//    	System.out.println("timeOut" + session.getTimeout());
+//    	System.out.println("startTimestamp" + session.getStartTimestamp());
+//    	System.out.println("lastAccessTime" + session.getLastAccessTime());
+    	Cookie[] cookies= req.getCookies();
+    	if(cookies!=null && cookies.length>0){
+    		for(Cookie cookie : cookies){
+        		System.out.println("name " + cookie.getName());
+        		System.out.println("value " + cookie.getValue());
+        	}
+    	}
         subject.checkRole("admin");
         req.getRequestDispatcher("/WEB-INF/jsp/hasRole.jsp").forward(req, resp);
         

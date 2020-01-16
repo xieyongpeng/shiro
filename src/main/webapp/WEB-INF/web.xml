@@ -18,7 +18,7 @@
     </context-param>  
     <context-param>
         <param-name>shiroConfigLocations</param-name>
-        <param-value>classpath:class9/shiro.ini</param-value>
+        <param-value>classpath:class10/SessionValidationScheduler.ini</param-value>
     </context-param>
     
     
