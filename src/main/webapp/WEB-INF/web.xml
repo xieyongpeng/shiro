@@ -6,12 +6,55 @@
             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
   
+  	<context-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>
+             classpath:class12/spring-beans.xml,  
+        	 classpath:class12/spring-shiro-web.xml 
+         </param-value>
+     </context-param>
+     <listener>
+         <listener-class>
+             org.springframework.web.context.ContextLoaderListener
+         </listener-class>
+     </listener>
+  
+  <filter>  
+    <filter-name>shiroFilter</filter-name>  
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+    <init-param>  
+        <param-name>targetFilterLifecycle</param-name>  
+        <param-value>true</param-value>  
+    </init-param>  
+  </filter>  
+	<filter-mapping>  
+    	<filter-name>shiroFilter</filter-name>  
+    	<url-pattern>/*</url-pattern>  
+	</filter-mapping>
+	
+	
+	<servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:class12/spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+  
   <!--- shiro 1.2 -->
+  <!--  
     <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
-    </listener>
+    </listener>-->
     <!-- 默认先从/WEB-INF/shiro.ini，如果没有找classpath:shiro.ini -->
-    <!--  -->
+    <!--  
     <context-param>
         <param-name>shiroEnvironmentClass</param-name>
         <param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
@@ -19,7 +62,7 @@
     <context-param>
         <param-name>shiroConfigLocations</param-name>
         <param-value>classpath:class10/SessionValidationScheduler.ini</param-value>
-    </context-param>
+    </context-param>-->
     
     
     <!--  
@@ -32,6 +75,8 @@
         <param-name>shiroConfigLocations</param-name>
         <param-value>classpath:class8/shiro.ini</param-value>
     </context-param>-->
+    
+    <!--  
     <filter>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
@@ -39,6 +84,7 @@
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
+  
    
 </web-app>
