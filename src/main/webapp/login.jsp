@@ -8,7 +8,7 @@
 <body>
 
 <div class="error">${error}</div>
-<form action="" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
     用户名：<input type="text" name="username" value="<shiro:principal/>"><br/>
     密码：<input type="password" name="password"><br/>
     下次自动登录：<input type="checkbox" name="rememberMe" value="true"><br/>
